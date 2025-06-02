@@ -79,6 +79,20 @@
             font-weight: 700;
             font-size: 1.5rem;
             color: white !important;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo styling */
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .navbar-brand img {
+            height: 35px;
         }
 
         .navbar-nav .nav-link {
@@ -354,10 +368,16 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .service-card,
-            .destination-card {
+            .service-card, .destination-card {
                 margin-bottom: 1rem;
+            }
+            
+            .navbar-brand img {
+                height: 35px;
+            }
+            
+            .navbar.scrolled .navbar-brand img {
+                height: 30px;
             }
         }
 
@@ -396,7 +416,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <i class="bi bi-airplane-engines me-2"></i>Tab Holidays
+                <img src="Images/Tab_new_logo.png" alt="Tab Holidays Logo">
+                Tab Holidays
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -763,7 +784,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -783,7 +803,6 @@
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             const scrollTop = document.getElementById('scrollTop');
-            
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
                 scrollTop.classList.add('visible');
@@ -842,13 +861,11 @@
                     const statNumber = entry.target.querySelector('.stat-number');
                     const text = statNumber.textContent;
                     const number = parseInt(text.replace(/\D/g, ''));
-                    
                     if (text.includes('24/7')) {
                         statNumber.textContent = '24/7';
                     } else {
                         animateCounter(statNumber, number);
                     }
-                    
                     statObserver.unobserve(entry.target);
                 }
             });
@@ -861,21 +878,20 @@
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             // Simple form validation and submission simulation
             const formData = new FormData(this);
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            
+
             // Show loading state
             submitBtn.innerHTML = '<i class="bi bi-arrow-clockwise spin me-2"></i>Sending...';
             submitBtn.disabled = true;
-            
+
             // Simulate form submission
             setTimeout(() => {
                 submitBtn.innerHTML = '<i class="bi bi-check me-2"></i>Message Sent!';
                 submitBtn.style.background = '#28a745';
-                
+
                 // Reset form after 2 seconds
                 setTimeout(() => {
                     this.reset();
@@ -891,7 +907,6 @@
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05) rotateY(5deg)';
             });
-            
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) rotateY(0deg)';
             });
@@ -913,11 +928,10 @@
                 ripple.style.height = '100px';
                 ripple.style.marginLeft = '-50px';
                 ripple.style.marginTop = '-50px';
-                
                 this.style.position = 'relative';
                 this.style.overflow = 'hidden';
                 this.appendChild(ripple);
-                
+
                 setTimeout(() => {
                     ripple.remove();
                 }, 600);
@@ -948,7 +962,6 @@
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.hero');
             const speed = scrolled * 0.5;
-            
             if (parallax) {
                 parallax.style.backgroundPosition = `center ${speed}px`;
             }
@@ -958,7 +971,6 @@
         window.addEventListener('load', function() {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease';
-            
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
@@ -968,12 +980,10 @@
         document.querySelector('.input-group button').addEventListener('click', function() {
             const emailInput = this.previousElementSibling;
             const email = emailInput.value;
-            
             if (email && email.includes('@')) {
                 const originalHTML = this.innerHTML;
                 this.innerHTML = '<i class="bi bi-check"></i>';
                 this.style.background = '#28a745';
-                
                 setTimeout(() => {
                     this.innerHTML = originalHTML;
                     this.style.background = '';
@@ -990,7 +1000,6 @@
         // Mobile menu enhancement
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbarCollapse = document.querySelector('.navbar-collapse');
-        
         if (navbarToggler) {
             navbarToggler.addEventListener('click', function() {
                 this.classList.toggle('active');

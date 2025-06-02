@@ -79,6 +79,33 @@
             color: white !important;
             display: flex;
             align-items: center;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin: -2px 0 0 0;
+            letter-spacing: 0.5px;
         }
 
         /* Logo styling - Updated dimensions */
@@ -407,8 +434,12 @@
                 min-height: 70px;
             }
 
-            .navbar-brand {
+            .company-name {
                 font-size: 1.2rem; /* Slightly smaller text on mobile */
+            }
+
+            .tagline {
+                font-size: 0.65rem; /* Smaller tagline on mobile */
             }
         }
 
@@ -447,8 +478,13 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="Images/Tab_new_logo.png" alt="Tab Holidays Logo">
-                Tab Holidays
+                <div class="brand-container">
+                    <img src="Images/Tab_new_logo.png" alt="Tab Holidays Logo">
+                    <div class="brand-text">
+                        <span class="company-name">Tab Holidays</span>
+                        <span class="tagline">A B2B Travel Company</span>
+                    </div>
+                </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

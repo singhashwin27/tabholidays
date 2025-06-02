@@ -109,24 +109,13 @@
                         url('Images/hero-background.jpg');
             background-size: cover;
             background-position: center center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
         }
 
         .hero-content {
@@ -367,10 +356,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero {
-                background-attachment: scroll;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -964,15 +949,15 @@
         `;
         document.head.appendChild(style);
 
-        // Parallax effect for hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero');
-            const speed = scrolled * 0.5;
-            if (parallax) {
-                parallax.style.backgroundPosition = `center ${speed}px`;
-            }
-        });
+        // Parallax effect for hero section (removed to fix scrolling issue)
+        // window.addEventListener('scroll', function() {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = document.querySelector('.hero');
+        //     const speed = scrolled * 0.5;
+        //     if (parallax) {
+        //         parallax.style.backgroundPosition = `center ${speed}px`;
+        //     }
+        // });
 
         // Add loading animation
         window.addEventListener('load', function() {

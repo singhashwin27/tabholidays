@@ -43,12 +43,8 @@
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .animate-on-scroll {
@@ -107,9 +103,14 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        /* Hero Section with Background Image */
         .hero {
-            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%), 
+                        url('Images/hero-background.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -138,13 +139,14 @@
             font-weight: 700;
             color: white;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.95);
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .btn-custom {
@@ -175,7 +177,7 @@
 
         .floating-icon {
             position: absolute;
-            color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.15);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -365,9 +367,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
+            
             .service-card, .destination-card {
                 margin-bottom: 1rem;
             }

@@ -144,56 +144,56 @@
                     <p class="lead">Explore the world's most beautiful places with our curated travel packages</p>
                 </div>
             </div>
-<div class="row">
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>City of Angels - Bangkok</h4>
-                        <p>Explore bustling markets, magnificent temples, street food paradise, and vibrant nightlife in Thailand's dynamic capital.</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>City of Angels - Bangkok</h4>
+                            <p>Explore bustling markets, magnificent temples, street food paradise, and vibrant nightlife in Thailand's dynamic capital.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>Beach Paradise - Pattaya</h4>
+                            <p>Enjoy pristine beaches, exciting water sports, vibrant entertainment, and world-class dining in this coastal gem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>Pearl of Andaman - Phuket</h4>
+                            <p>Discover stunning beaches, crystal-clear waters, luxury resorts, and unforgettable sunset views in Thailand's largest island.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>Natural Wonder - Krabi</h4>
+                            <p>Experience dramatic limestone cliffs, emerald waters, hidden caves, and pristine beaches in this tropical paradise.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>Coconut Island - Koh Samui</h4>
+                            <p>Relax on palm-fringed beaches, explore Buddhist temples, enjoy spa treatments, and experience island life at its finest.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="destination-card">
+                        <div class="destination-overlay">
+                            <h4>Lion City - Singapore</h4>
+                            <p>Discover a modern metropolis with world-class cuisine, stunning architecture, lush gardens, and diverse cultural experiences.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>Beach Paradise - Pattaya</h4>
-                        <p>Enjoy pristine beaches, exciting water sports, vibrant entertainment, and world-class dining in this coastal gem.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>Pearl of Andaman - Phuket</h4>
-                        <p>Discover stunning beaches, crystal-clear waters, luxury resorts, and unforgettable sunset views in Thailand's largest island.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>Natural Wonder - Krabi</h4>
-                        <p>Experience dramatic limestone cliffs, emerald waters, hidden caves, and pristine beaches in this tropical paradise.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>Coconut Island - Koh Samui</h4>
-                        <p>Relax on palm-fringed beaches, explore Buddhist temples, enjoy spa treatments, and experience island life at its finest.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 animate-on-scroll">
-                <div class="destination-card">
-                    <div class="destination-overlay">
-                        <h4>Lion City - Singapore</h4>
-                        <p>Discover a modern metropolis with world-class cuisine, stunning architecture, lush gardens, and diverse cultural experiences.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
@@ -214,7 +214,7 @@
                         </div>
                         <div class="col-6">
                             <div class="stats">
-                                <span class="stat-number">5000+</span>
+                                <span class="stat-number">100000+</span>
                                 <span class="stat-label">Happy Customers</span>
                             </div>
                         </div>
@@ -222,8 +222,8 @@
                     <div class="row mt-3">
                         <div class="col-6">
                             <div class="stats">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Destinations</span>
+                                <span class="stat-number">4.8</span>
+                                <span class="stat-label">Average Rating</span>
                             </div>
                         </div>
                         <div class="col-6">
@@ -458,10 +458,23 @@
                 if (entry.isIntersecting) {
                     const statNumber = entry.target.querySelector('.stat-number');
                     const text = statNumber.textContent;
-                    const number = parseInt(text.replace(/\D/g, ''));
+                    const number = parseFloat(text.replace(/\D/g, ''));
                     
                     if (text.includes('24/7')) {
                         statNumber.textContent = '24/7';
+                    } else if (text.includes('4.8')) {
+                        // Animate the rating from 0 to 4.8
+                        let current = 0;
+                        const increment = 4.8 / 100;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= 4.8) {
+                                statNumber.textContent = '4.8';
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = current.toFixed(1);
+                            }
+                        }, 20);
                     } else {
                         animateCounter(statNumber, number);
                     }
@@ -482,11 +495,11 @@
             const formData = new FormData(this);
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-
+            
             // Show loading state
             submitBtn.innerHTML = '<i class="bi bi-arrow-clockwise spin me-2"></i>Sending...';
             submitBtn.disabled = true;
-
+            
             // Simulate form submission
             setTimeout(() => {
                 submitBtn.innerHTML = '<i class="bi bi-check me-2"></i>Message Sent!';

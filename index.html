@@ -43,8 +43,12 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .animate-on-scroll {
@@ -105,8 +109,7 @@
 
         /* Hero Section with Background Image */
         .hero {
-            background: linear-gradient(135deg, rgba(32, 178, 170, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%), 
-                        url('Images/hero-background.jpg');
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%), url('Images/hero-background.jpg');
             background-size: cover;
             background-position: center center;
             background-attachment: scroll;
@@ -359,15 +362,15 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .service-card, .destination-card {
                 margin-bottom: 1rem;
             }
-            
+
             .navbar-brand img {
                 height: 35px;
             }
-            
+
             .navbar.scrolled .navbar-brand img {
                 height: 30px;
             }
@@ -469,10 +472,10 @@
                 <div class="col-lg-4 col-md-6 animate-on-scroll">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="bi bi-airplane-engines"></i>
+                            <i class="bi bi-compass"></i>
                         </div>
-                        <h4>Flight Booking</h4>
-                        <p>Find the best deals on domestic and international flights with our exclusive partnerships and competitive pricing.</p>
+                        <h4>Excursions</h4>
+                        <p>Discover hidden gems and must-see attractions with our carefully curated excursions and guided tours tailored to your interests.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 animate-on-scroll">
@@ -496,19 +499,19 @@
                 <div class="col-lg-4 col-md-6 animate-on-scroll">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="bi bi-passport"></i>
+                            <i class="bi bi-truck"></i>
                         </div>
-                        <h4>Visa Assistance</h4>
-                        <p>Complete visa application support and documentation guidance to make your international travel smooth.</p>
+                        <h4>Transportation</h4>
+                        <p>Reliable and comfortable transportation services including airport transfers, private cars, and group transport solutions.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 animate-on-scroll">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
+                            <i class="bi bi-people"></i>
                         </div>
-                        <h4>Travel Insurance</h4>
-                        <p>Comprehensive travel insurance coverage to protect you and your loved ones during your journey.</p>
+                        <h4>MICE and Groups</h4>
+                        <p>Specialized services for Meetings, Incentives, Conferences, and Events with dedicated group travel management.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 animate-on-scroll">
@@ -665,18 +668,17 @@
                                 </div>
                                 <div class="col-md-6">
                                     <select class="form-control" required>
-                                        <option value="">Select Destination</option>
-                                        <option value="maldives">Maldives</option>
-                                        <option value="japan">Japan</option>
-                                        <option value="newzealand">New Zealand</option>
-                                        <option value="switzerland">Switzerland</option>
-                                        <option value="kenya">Kenya</option>
-                                        <option value="egypt">Egypt</option>
+                                        <option value="">Select Service</option>
+                                        <option value="excursions">Excursions</option>
+                                        <option value="hotels">Hotel Reservations</option>
+                                        <option value="tours">Tour Packages</option>
+                                        <option value="transportation">Transportation</option>
+                                        <option value="mice">MICE and Groups</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
                             </div>
-                            <textarea class="form-control" rows="5" placeholder="Tell us about your dream vacation..." required></textarea>
+                            <textarea class="form-control" rows="5" placeholder="Tell us about your travel requirements..." required></textarea>
                             <div class="text-center">
                                 <button type="submit" class="btn-custom">
                                     <i class="bi bi-send me-2"></i>Send Message
@@ -738,10 +740,11 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h6>Services</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light text-decoration-none">Flight Booking</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Excursions</a></li>
                         <li><a href="#" class="text-light text-decoration-none">Hotel Reservations</a></li>
                         <li><a href="#" class="text-light text-decoration-none">Tour Packages</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Visa Assistance</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Transportation</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">MICE and Groups</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">
@@ -948,16 +951,6 @@
             }
         `;
         document.head.appendChild(style);
-
-        // Parallax effect for hero section (removed to fix scrolling issue)
-        // window.addEventListener('scroll', function() {
-        //     const scrolled = window.pageYOffset;
-        //     const parallax = document.querySelector('.hero');
-        //     const speed = scrolled * 0.5;
-        //     if (parallax) {
-        //         parallax.style.backgroundPosition = `center ${speed}px`;
-        //     }
-        // });
 
         // Add loading animation
         window.addEventListener('load', function() {

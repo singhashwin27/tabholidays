@@ -1,6 +1,6 @@
-/* ================================================
-   Tab Holidays - Travel Company Website Styles
-   ================================================ */
+/* ================================================ 
+Tab Holidays - Travel Company Website Styles
+================================================ */
 
 /* CSS Variables for Consistent Theming */
 :root {
@@ -12,10 +12,9 @@
     --dark: #2c3e50;
 }
 
-/* ================================================
-   Global Reset and Base Styles
-   ================================================ */
-
+/* ================================================ 
+Global Reset and Base Styles 
+================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -29,10 +28,9 @@ body {
     overflow-x: hidden;
 }
 
-/* ================================================
-   Custom Animations and Keyframes
-   ================================================ */
-
+/* ================================================ 
+Custom Animations and Keyframes 
+================================================ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -65,10 +63,9 @@ body {
     transform: translateY(0);
 }
 
-/* ================================================
-   Navigation Styles
-   ================================================ */
-
+/* ================================================ 
+Navigation Styles 
+================================================ */
 .navbar {
     background: rgba(32, 178, 170, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -163,10 +160,9 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ================================================
-   Hero Section Styles
-   ================================================ */
-
+/* ================================================ 
+Hero Section Styles 
+================================================ */
 .hero {
     background: linear-gradient(135deg, rgba(32, 178, 170, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%), url('Images/hero-background.jpg');
     background-size: cover;
@@ -253,10 +249,9 @@ body {
     animation-delay: 4s;
 }
 
-/* ================================================
-   Services Section Styles
-   ================================================ */
-
+/* ================================================ 
+Services Section Styles 
+================================================ */
 .services {
     padding: 80px 0;
     background: var(--light-gray);
@@ -292,10 +287,9 @@ body {
     font-size: 2rem;
 }
 
-/* ================================================
-   Destinations Section Styles
-   ================================================ */
-
+/* ================================================ 
+Destinations Section Styles 
+================================================ */
 .destinations {
     padding: 80px 0;
 }
@@ -351,10 +345,9 @@ body {
     margin-top: 1rem;
 }
 
-/* ================================================
-   Testimonials Section Styles - Enhanced Mobile
-   ================================================ */
-
+/* ================================================ 
+Enhanced Testimonials Section - With Improved Width Controls
+================================================ */
 .testimonials {
     padding: 80px 0;
     background: var(--light-gray);
@@ -362,15 +355,18 @@ body {
     overflow: hidden;
 }
 
-/* Testimonials Grid Layout */
+/* Testimonials Grid Layout - Enhanced with Better Width Control */
 .testimonial-row {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 400px)); /* Better min/max control */
     gap: 1.5rem;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: center; /* Center the grid when not filling full width */
+    max-width: 1400px; /* Prevent testimonials from getting too spread out */
+    margin: 0 auto;
 }
 
-/* Individual Testimonial Cards */
+/* Individual Testimonial Cards - Enhanced Width Control */
 .testimonial-card {
     background: white;
     border-radius: 20px;
@@ -379,13 +375,16 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid transparent;
-    height: auto;
-    min-height: 350px;
+    
+    /* Flexbox for internal content distribution */
     display: flex;
     flex-direction: column;
-    flex: 1;
-    max-width: 400px;
-    margin-bottom: 1.5rem;
+    height: 100%;
+    
+    /* Enhanced width constraints */
+    min-width: 320px;  /* Minimum readable width */
+    max-width: 400px;  /* Maximum width to prevent stretching */
+    width: 100%;
 }
 
 .testimonial-card:hover {
@@ -395,12 +394,12 @@ body {
 }
 
 .testimonial-content {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-/* Star Rating Styling */
+/* Star Rating - Fixed at top */
 .rating {
     color: #ffc107;
     font-size: 1.2rem;
@@ -410,17 +409,21 @@ body {
     gap: 0.2rem;
 }
 
-/* Testimonial Text */
+/* Testimonial Text - Takes up available space */
 .testimonial-card p {
     font-style: italic;
     color: var(--dark);
     line-height: 1.8;
-    margin-bottom: 2rem;
-    flex-grow: 1;
     font-size: 1rem;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 100%;
+    overflow-wrap: break-word; /* Handle long words gracefully */
+    hyphens: auto; /* Allow hyphenation for better text flow */
 }
 
-/* Author Information */
+/* Author Information - Fixed at bottom */
 .testimonial-author {
     display: flex;
     align-items: center;
@@ -459,12 +462,10 @@ body {
     font-weight: 400;
 }
 
-/* ================================================
-   Carousel Controls Styling
-   ================================================ */
-
-.carousel-control-prev,
-.carousel-control-next {
+/* ================================================ 
+Carousel Controls Styling 
+================================================ */
+.carousel-control-prev, .carousel-control-next {
     width: 60px;
     height: 60px;
     background: var(--primary-teal);
@@ -483,8 +484,7 @@ body {
     right: -30px;
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
+.carousel-control-prev:hover, .carousel-control-next:hover {
     opacity: 1;
     background: var(--dark-teal);
     transform: translateY(-50%) scale(1.1);
@@ -523,16 +523,14 @@ body {
     cursor: pointer;
 }
 
-.carousel-indicators-custom button.active,
-.carousel-indicators-custom button:hover {
+.carousel-indicators-custom button.active, .carousel-indicators-custom button:hover {
     background: var(--primary-teal);
     transform: scale(1.2);
 }
 
-/* ================================================
-   About Section Styles
-   ================================================ */
-
+/* ================================================ 
+About Section Styles 
+================================================ */
 .about {
     padding: 80px 0;
     background: white;
@@ -565,10 +563,9 @@ body {
     font-weight: 500;
 }
 
-/* ================================================
-   Contact Section Styles
-   ================================================ */
-
+/* ================================================ 
+Contact Section Styles 
+================================================ */
 .contact {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
@@ -601,10 +598,9 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* ================================================
-   Footer Styles
-   ================================================ */
-
+/* ================================================ 
+Footer Styles 
+================================================ */
 .footer {
     background: var(--dark);
     color: white;
@@ -730,27 +726,75 @@ body {
     margin: 0 0.5rem;
 }
 
-/* ================================================
-   Responsive Design - Tablet
-   ================================================ */
+/* ================================================ 
+Scroll to Top Button 
+================================================ */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
 
-@media (max-width: 992px) {
-    /* Testimonials Mobile Layout */
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--dark-teal);
+    transform: translateY(-3px);
+}
+
+/* ================================================ 
+Enhanced Responsive Design for Testimonials
+================================================ */
+
+/* Large Desktop - Prevent over-stretching */
+@media (min-width: 1400px) {
     .testimonial-row {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: repeat(3, 400px); /* Fixed 3 columns on very large screens */
+        max-width: 1300px;
     }
+}
 
+/* Desktop - Optimal 3-column layout */
+@media (min-width: 993px) and (max-width: 1399px) {
+    .testimonial-row {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 380px));
+        max-width: 1200px;
+    }
+}
+
+/* ================================================ 
+Responsive Design - Tablet 
+================================================ */
+@media (max-width: 992px) {
+    /* Testimonials Tablet Layout */
+    .testimonial-row {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
     .testimonial-card {
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 2rem;
-        min-height: 300px;
+        min-width: 300px;
+        max-width: 500px;
     }
 
     /* Carousel controls positioning for tablets */
-    .carousel-control-prev,
-    .carousel-control-next {
+    .carousel-control-prev, .carousel-control-next {
         width: 50px;
         height: 50px;
     }
@@ -770,10 +814,9 @@ body {
     }
 }
 
-/* ================================================
-   Responsive Design - Mobile
-   ================================================ */
-
+/* ================================================ 
+Responsive Design - Mobile 
+================================================ */
 @media (max-width: 768px) {
     /* Hero Section Mobile */
     .hero {
@@ -785,8 +828,7 @@ body {
     }
 
     /* General Card Spacing */
-    .service-card,
-    .destination-card {
+    .service-card, .destination-card {
         margin-bottom: 1rem;
     }
 
@@ -821,18 +863,26 @@ body {
     .testimonials {
         padding: 60px 0;
     }
-
+    
+    .testimonial-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 1rem;
+    }
+    
     .testimonial-card {
         padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        min-height: 280px;
         border-radius: 15px;
+        min-width: 280px;  /* Smaller minimum for mobile */
+        max-width: 100%;   /* Full width on mobile */
+        margin: 0 auto;    /* Center single column */
     }
 
     .testimonial-card p {
         font-size: 0.95rem;
         line-height: 1.6;
-        margin-bottom: 1.5rem;
     }
 
     .rating {
@@ -856,8 +906,7 @@ body {
     }
 
     /* Mobile Carousel Controls */
-    .carousel-control-prev,
-    .carousel-control-next {
+    .carousel-control-prev, .carousel-control-next {
         width: 45px;
         height: 45px;
         opacity: 0.9;
@@ -952,16 +1001,21 @@ body {
     }
 }
 
-/* ================================================
-   Responsive Design - Extra Small Devices
-   ================================================ */
-
+/* ================================================ 
+Responsive Design - Extra Small Devices 
+================================================ */
 @media (max-width: 576px) {
     /* Extra Small Devices - Further Optimizations */
+    .testimonial-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
     .testimonial-card {
         padding: 1.2rem;
-        min-height: 260px;
-        font-size: 0.9rem;
+        min-width: 260px;  /* Even smaller minimum for tiny screens */
+        max-width: 100%;
     }
 
     .testimonial-card p {
@@ -980,8 +1034,7 @@ body {
         font-size: 1rem;
     }
 
-    .carousel-control-prev,
-    .carousel-control-next {
+    .carousel-control-prev, .carousel-control-next {
         width: 40px;
         height: 40px;
     }
@@ -999,36 +1052,4 @@ body {
         height: 40px;
         font-size: 1rem;
     }
-}
-
-/* ================================================
-   Scroll to Top Button
-   ================================================ */
-
-.scroll-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--primary-teal);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-top:hover {
-    background: var(--dark-teal);
-    transform: translateY(-3px);
 }

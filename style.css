@@ -1,6 +1,4 @@
-/* ================================================ 
-Tab Holidays - Travel Company Website Styles
-================================================ */
+/* ================================================ Tab Holidays - Travel Company Website Styles ================================================ */
 
 /* CSS Variables for Consistent Theming */
 :root {
@@ -12,9 +10,7 @@ Tab Holidays - Travel Company Website Styles
     --dark: #2c3e50;
 }
 
-/* ================================================ 
-Global Reset and Base Styles 
-================================================ */
+/* ================================================ Global Reset and Base Styles ================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -28,9 +24,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================================================ 
-Custom Animations and Keyframes 
-================================================ */
+/* ================================================ Custom Animations and Keyframes ================================================ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -63,9 +57,7 @@ Custom Animations and Keyframes
     transform: translateY(0);
 }
 
-/* ================================================ 
-Navigation Styles 
-================================================ */
+/* ================================================ Navigation Styles ================================================ */
 .navbar {
     background: rgba(32, 178, 170, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -160,9 +152,7 @@ Navigation Styles
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ================================================ 
-Hero Section Styles 
-================================================ */
+/* ================================================ Hero Section Styles ================================================ */
 .hero {
     background: linear-gradient(135deg, rgba(32, 178, 170, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%), url('Images/hero-background.jpg');
     background-size: cover;
@@ -249,9 +239,7 @@ Hero Section Styles
     animation-delay: 4s;
 }
 
-/* ================================================ 
-Services Section Styles 
-================================================ */
+/* ================================================ Services Section Styles ================================================ */
 .services {
     padding: 80px 0;
     background: var(--light-gray);
@@ -287,9 +275,7 @@ Services Section Styles
     font-size: 2rem;
 }
 
-/* ================================================ 
-Destinations Section Styles 
-================================================ */
+/* ================================================ Destinations Section Styles ================================================ */
 .destinations {
     padding: 80px 0;
 }
@@ -345,9 +331,7 @@ Destinations Section Styles
     margin-top: 1rem;
 }
 
-/* ================================================ 
-Enhanced Testimonials Section - With Improved Width Controls
-================================================ */
+/* ================================================ Enhanced Testimonials Section - With Improved Width Controls ================================================ */
 .testimonials {
     padding: 80px 0;
     background: var(--light-gray);
@@ -375,15 +359,13 @@ Enhanced Testimonials Section - With Improved Width Controls
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid transparent;
-    
     /* Flexbox for internal content distribution */
     display: flex;
     flex-direction: column;
     height: 100%;
-    
     /* Enhanced width constraints */
-    min-width: 320px;  /* Minimum readable width */
-    max-width: 400px;  /* Maximum width to prevent stretching */
+    min-width: 320px; /* Minimum readable width */
+    max-width: 400px; /* Maximum width to prevent stretching */
     width: 100%;
 }
 
@@ -462,10 +444,9 @@ Enhanced Testimonials Section - With Improved Width Controls
     font-weight: 400;
 }
 
-/* ================================================ 
-Carousel Controls Styling 
-================================================ */
-.carousel-control-prev, .carousel-control-next {
+/* ================================================ Carousel Controls Styling ================================================ */
+.carousel-control-prev,
+.carousel-control-next {
     width: 60px;
     height: 60px;
     background: var(--primary-teal);
@@ -484,7 +465,8 @@ Carousel Controls Styling
     right: -30px;
 }
 
-.carousel-control-prev:hover, .carousel-control-next:hover {
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
     opacity: 1;
     background: var(--dark-teal);
     transform: translateY(-50%) scale(1.1);
@@ -523,14 +505,13 @@ Carousel Controls Styling
     cursor: pointer;
 }
 
-.carousel-indicators-custom button.active, .carousel-indicators-custom button:hover {
+.carousel-indicators-custom button.active,
+.carousel-indicators-custom button:hover {
     background: var(--primary-teal);
     transform: scale(1.2);
 }
 
-/* ================================================ 
-About Section Styles 
-================================================ */
+/* ================================================ About Section Styles ================================================ */
 .about {
     padding: 80px 0;
     background: white;
@@ -563,9 +544,7 @@ About Section Styles
     font-weight: 500;
 }
 
-/* ================================================ 
-Contact Section Styles 
-================================================ */
+/* ================================================ Contact Section Styles ================================================ */
 .contact {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
@@ -598,9 +577,7 @@ Contact Section Styles
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* ================================================ 
-Footer Styles 
-================================================ */
+/* ================================================ Footer Styles ================================================ */
 .footer {
     background: var(--dark);
     color: white;
@@ -726,9 +703,7 @@ Footer Styles
     margin: 0 0.5rem;
 }
 
-/* ================================================ 
-Scroll to Top Button 
-================================================ */
+/* ================================================ Scroll to Top Button ================================================ */
 .scroll-top {
     position: fixed;
     bottom: 20px;
@@ -757,9 +732,113 @@ Scroll to Top Button
     transform: translateY(-3px);
 }
 
-/* ================================================ 
-Enhanced Responsive Design for Testimonials
-================================================ */
+/* ================================================ Policy Pages Styles ================================================ */
+
+/* Page Header for Policy Pages */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
+    color: white;
+    padding: 120px 0 80px;
+    margin-top: 100px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+
+.breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--secondary-lime);
+}
+
+.breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Policy Content Section */
+.policy-content {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+/* Policy Document Container */
+.policy-document {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Last Updated Notice */
+.last-updated {
+    background: rgba(32, 178, 170, 0.1);
+    border-left: 4px solid var(--primary-teal);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Policy Section Styling */
+.policy-section {
+    margin-bottom: 2.5rem;
+}
+
+.policy-section h2 {
+    color: var(--primary-teal);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-lime);
+}
+
+.policy-section h3 {
+    color: var(--dark-teal);
+    font-weight: 600;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.policy-section p {
+    color: var(--dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.policy-section ul {
+    margin-bottom: 1.5rem;
+}
+
+.policy-section li {
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.policy-section a {
+    color: var(--primary-teal);
+    text-decoration: none;
+}
+
+.policy-section a:hover {
+    color: var(--dark-teal);
+    text-decoration: underline;
+}
+
+/* Contact Info Box */
+.contact-info {
+    background: rgba(32, 178, 170, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-teal);
+}
+
+/* ================================================ Enhanced Responsive Design for Testimonials ================================================ */
 
 /* Large Desktop - Prevent over-stretching */
 @media (min-width: 1400px) {
@@ -777,9 +856,7 @@ Enhanced Responsive Design for Testimonials
     }
 }
 
-/* ================================================ 
-Responsive Design - Tablet 
-================================================ */
+/* ================================================ Responsive Design - Tablet ================================================ */
 @media (max-width: 992px) {
     /* Testimonials Tablet Layout */
     .testimonial-row {
@@ -787,14 +864,15 @@ Responsive Design - Tablet
         max-width: 800px;
         margin: 0 auto;
     }
-    
+
     .testimonial-card {
         min-width: 300px;
         max-width: 500px;
     }
 
     /* Carousel controls positioning for tablets */
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         width: 50px;
         height: 50px;
     }
@@ -814,9 +892,7 @@ Responsive Design - Tablet
     }
 }
 
-/* ================================================ 
-Responsive Design - Mobile 
-================================================ */
+/* ================================================ Responsive Design - Mobile ================================================ */
 @media (max-width: 768px) {
     /* Hero Section Mobile */
     .hero {
@@ -828,7 +904,8 @@ Responsive Design - Mobile
     }
 
     /* General Card Spacing */
-    .service-card, .destination-card {
+    .service-card,
+    .destination-card {
         margin-bottom: 1rem;
     }
 
@@ -863,7 +940,7 @@ Responsive Design - Mobile
     .testimonials {
         padding: 60px 0;
     }
-    
+
     .testimonial-row {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -871,13 +948,13 @@ Responsive Design - Mobile
         margin: 0;
         padding: 0 1rem;
     }
-    
+
     .testimonial-card {
         padding: 1.5rem;
         border-radius: 15px;
-        min-width: 280px;  /* Smaller minimum for mobile */
-        max-width: 100%;   /* Full width on mobile */
-        margin: 0 auto;    /* Center single column */
+        min-width: 280px; /* Smaller minimum for mobile */
+        max-width: 100%; /* Full width on mobile */
+        margin: 0 auto; /* Center single column */
     }
 
     .testimonial-card p {
@@ -906,7 +983,8 @@ Responsive Design - Mobile
     }
 
     /* Mobile Carousel Controls */
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         width: 45px;
         height: 45px;
         opacity: 0.9;
@@ -999,11 +1077,24 @@ Responsive Design - Mobile
         min-width: 100px;
         text-align: center;
     }
+
+    /* Policy Pages Mobile Responsive */
+    .page-header {
+        padding: 100px 0 60px;
+        margin-top: 80px;
+    }
+
+    .policy-document {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .policy-content {
+        padding: 60px 0;
+    }
 }
 
-/* ================================================ 
-Responsive Design - Extra Small Devices 
-================================================ */
+/* ================================================ Responsive Design - Extra Small Devices ================================================ */
 @media (max-width: 576px) {
     /* Extra Small Devices - Further Optimizations */
     .testimonial-row {
@@ -1011,10 +1102,10 @@ Responsive Design - Extra Small Devices
         gap: 1rem;
         padding: 0 0.5rem;
     }
-    
+
     .testimonial-card {
         padding: 1.2rem;
-        min-width: 260px;  /* Even smaller minimum for tiny screens */
+        min-width: 260px; /* Even smaller minimum for tiny screens */
         max-width: 100%;
     }
 
@@ -1034,7 +1125,8 @@ Responsive Design - Extra Small Devices
         font-size: 1rem;
     }
 
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         width: 40px;
         height: 40px;
     }
@@ -1051,5 +1143,23 @@ Responsive Design - Extra Small Devices
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+
+    /* Policy Pages Extra Small Mobile */
+    .policy-document {
+        padding: 1.5rem 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .policy-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .policy-section h3 {
+        font-size: 1.25rem;
+    }
+
+    .contact-info {
+        padding: 1rem;
     }
 }

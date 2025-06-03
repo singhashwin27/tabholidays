@@ -239,6 +239,54 @@ body {
     animation-delay: 4s;
 }
 
+/* ================================================
+   Hero Buttons Container - FIXED FOR MOBILE
+   ================================================ */
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ================================================
+   FIXED: Hero Buttons Mobile Layout
+   ================================================ */
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.btn-custom,
+.btn-outline-light {
+    width: 100%;
+    max-width: 280px;
+    min-width: auto;
+    padding: 15px 20px;
+    font-size: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Center hero content on mobile */
+.hero-content {
+    text-align: center;
+}
+
+/* Hero Buttons Extra Small Mobile */
+.btn-custom,
+.btn-outline-light {
+    max-width: 260px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+}
+
 /* ================================================ Services Section Styles ================================================ */
 .services {
     padding: 80px 0;

@@ -1,4 +1,10 @@
-// Smooth scrolling for navigation links
+/* ================================================
+   Tab Holidays - Travel Company Website JavaScript
+   ================================================ */
+
+// ================================================
+// Smooth Scrolling for Navigation Links
+// ================================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,7 +18,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
+// ================================================
+// Navbar Scroll Effect and Scroll to Top Button
+// ================================================
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     const scrollTop = document.getElementById('scrollTop');
@@ -26,7 +34,9 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Scroll to top functionality
+// ================================================
+// Scroll to Top Functionality
+// ================================================
 document.getElementById('scrollTop').addEventListener('click', function() {
     window.scrollTo({
         top: 0,
@@ -34,7 +44,9 @@ document.getElementById('scrollTop').addEventListener('click', function() {
     });
 });
 
-// Animate elements on scroll
+// ================================================
+// Animate Elements on Scroll
+// ================================================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -53,7 +65,9 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
-// Counter animation for stats
+// ================================================
+// Counter Animation for Statistics
+// ================================================
 function animateCounter(element, target) {
     let current = 0;
     const increment = target / 100;
@@ -103,28 +117,20 @@ document.querySelectorAll('.stats').forEach(stat => {
     statObserver.observe(stat);
 });
 
-// Testimonials carousel enhancement
+// ================================================
+// Testimonials Carousel Enhancement - DISABLED AUTO-SWITCHING
+// ================================================
 document.addEventListener('DOMContentLoaded', function() {
     const testimonialCarousel = document.getElementById('testimonialCarousel');
-    
     if (testimonialCarousel) {
-        // Initialize Bootstrap carousel with custom options
+        // Initialize Bootstrap carousel with auto-switching DISABLED
         const carousel = new bootstrap.Carousel(testimonialCarousel, {
-            interval: 5000,
+            interval: false, // DISABLED auto-switching by setting interval to false
             wrap: true,
             touch: true
         });
 
-        // Add pause on hover functionality
-        testimonialCarousel.addEventListener('mouseenter', function() {
-            carousel.pause();
-        });
-
-        testimonialCarousel.addEventListener('mouseleave', function() {
-            carousel.cycle();
-        });
-
-        // Add keyboard navigation
+        // Keep keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') {
                 carousel.prev();
@@ -152,7 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Testimonial card hover effects
+// ================================================
+// Testimonial Card Hover Effects
+// ================================================
 document.querySelectorAll('.testimonial-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-15px) rotateY(5deg)';
@@ -165,7 +173,9 @@ document.querySelectorAll('.testimonial-card').forEach(card => {
     });
 });
 
-// Web3Forms contact form submission
+// ================================================
+// Web3Forms Contact Form Submission
+// ================================================
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -206,9 +216,11 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 submitBtn.style.background = '';
                 successMessage.remove();
             }, 3000);
+            
         } else {
             throw new Error(result.message || 'Something went wrong');
         }
+        
     } catch (error) {
         console.error('Error:', error);
         
@@ -232,18 +244,22 @@ document.getElementById('contactForm').addEventListener('submit', async function
     }
 });
 
-// Add hover effects to destination cards
+// ================================================
+// Destination Cards Hover Effects
+// ================================================
 document.querySelectorAll('.destination-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'scale(1.05) rotateY(5deg)';
     });
-    
+
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1) rotateY(0deg)';
     });
 });
 
-// Add click effect to service cards
+// ================================================
+// Service Cards Click Effect with Ripple Animation
+// ================================================
 document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('click', function() {
         // Add ripple effect
@@ -270,7 +286,9 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 });
 
-// Add CSS for ripple animation and spin
+// ================================================
+// Dynamic CSS for Animations
+// ================================================
 const style = document.createElement('style');
 style.textContent = `
     @keyframes ripple {
@@ -279,16 +297,13 @@ style.textContent = `
             opacity: 0;
         }
     }
-    
     .spin {
         animation: spin 1s linear infinite;
     }
-    
     @keyframes spin {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
     }
-    
     @keyframes testimonialSlideIn {
         from {
             opacity: 0;
@@ -299,24 +314,26 @@ style.textContent = `
             transform: translateY(0) scale(1);
         }
     }
-    
     .testimonial-card.animated {
         animation: testimonialSlideIn 0.8s ease-out forwards;
     }
 `;
 document.head.appendChild(style);
 
-// Add loading animation
+// ================================================
+// Page Loading Animation
+// ================================================
 window.addEventListener('load', function() {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
-    
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
 });
 
-// Mobile menu enhancement
+// ================================================
+// Mobile Menu Enhancement
+// ================================================
 const navbarToggler = document.querySelector('.navbar-toggler');
 const navbarCollapse = document.querySelector('.navbar-collapse');
 
@@ -339,7 +356,9 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     });
 });
 
-// Enhanced testimonial carousel indicators
+// ================================================
+// Enhanced Testimonial Carousel Indicators
+// ================================================
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.getElementById('testimonialCarousel');
     const indicators = document.querySelectorAll('.carousel-indicators-custom button');
@@ -351,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 indicator.classList.toggle('active', index === e.to);
             });
         });
-        
+
         // Add click functionality to custom indicators
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', function() {
@@ -362,7 +381,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add touch/swipe support for testimonials on mobile
+// ================================================
+// Touch/Swipe Support for Testimonials on Mobile
+// ================================================
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -377,19 +398,19 @@ document.getElementById('testimonialCarousel')?.addEventListener('touchend', fun
 
 function handleSwipe() {
     const carousel = bootstrap.Carousel.getInstance(document.getElementById('testimonialCarousel'));
-    
     if (touchEndX < touchStartX - 50) {
         // Swipe left - next slide
         carousel.next();
     }
-    
     if (touchEndX > touchStartX + 50) {
         // Swipe right - previous slide
         carousel.prev();
     }
 }
 
-// Testimonial rating animation
+// ================================================
+// Testimonial Rating Stars Animation
+// ================================================
 document.addEventListener('DOMContentLoaded', function() {
     const ratingObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
@@ -407,16 +428,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 ratingObserver.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.5
-    });
-    
+    }, { threshold: 0.5 });
+
     document.querySelectorAll('.rating').forEach(rating => {
         ratingObserver.observe(rating);
     });
 });
 
-// Enhanced parallax effect for floating elements
+// ================================================
+// Enhanced Parallax Effect for Floating Elements
+// ================================================
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.floating-icon');
@@ -428,30 +449,207 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Auto-resize testimonial cards to equal height
+// ================================================
+// Testimonial Cards Equal Height Management
+// ================================================
 function equalizeTestimonialHeights() {
     const cards = document.querySelectorAll('.testimonial-card');
     let maxHeight = 0;
-    
-    // Reset heights
+
+    // Reset heights first
     cards.forEach(card => {
         card.style.height = 'auto';
     });
-    
-    // Find max height
+
+    // Find maximum height
     cards.forEach(card => {
         const height = card.offsetHeight;
         if (height > maxHeight) {
             maxHeight = height;
         }
     });
-    
-    // Set all cards to max height
+
+    // Set all cards to maximum height for uniformity
     cards.forEach(card => {
         card.style.height = maxHeight + 'px';
     });
 }
 
-// Run on load and resize
-window.addEventListener('load', equalizeTestimonialHeights);
-window.addEventListener('resize', equalizeTestimonialHeights);
+// ================================================
+// Window Event Listeners
+// ================================================
+
+// Run equalization on window load and resize
+window.addEventListener('load', function() {
+    // Small delay to ensure all content is rendered
+    setTimeout(equalizeTestimonialHeights, 100);
+});
+
+window.addEventListener('resize', function() {
+    // Debounce resize events
+    clearTimeout(window.resizeTimeout);
+    window.resizeTimeout = setTimeout(equalizeTestimonialHeights, 250);
+});
+
+// ================================================
+// Form Validation Enhancement
+// ================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const inputs = form.querySelectorAll('input, select, textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+                validateField(this);
+            }
+        });
+    });
+    
+    function validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let errorMessage = '';
+        
+        // Check if required field is empty
+        if (field.hasAttribute('required') && !value) {
+            isValid = false;
+            errorMessage = 'This field is required.';
+        }
+        
+        // Email validation
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address.';
+            }
+        }
+        
+        // Phone validation
+        if (field.type === 'tel' && value) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+                isValid = false;
+                errorMessage = 'Please enter a valid phone number.';
+            }
+        }
+        
+        // Update field styling
+        if (isValid) {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+            removeErrorMessage(field);
+        } else {
+            field.classList.remove('is-valid');
+            field.classList.add('is-invalid');
+            showErrorMessage(field, errorMessage);
+        }
+        
+        return isValid;
+    }
+    
+    function showErrorMessage(field, message) {
+        removeErrorMessage(field);
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'invalid-feedback';
+        errorDiv.textContent = message;
+        field.parentNode.appendChild(errorDiv);
+    }
+    
+    function removeErrorMessage(field) {
+        const existingError = field.parentNode.querySelector('.invalid-feedback');
+        if (existingError) {
+            existingError.remove();
+        }
+    }
+});
+
+// ================================================
+// Performance Optimization - Debounced Scroll
+// ================================================
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Optimize scroll events
+const optimizedScrollHandler = debounce(function() {
+    // Any heavy scroll operations can be placed here
+    // Currently handled by individual scroll listeners above
+}, 16); // ~60fps
+
+window.addEventListener('scroll', optimizedScrollHandler);
+
+// ================================================
+// Accessibility Enhancements
+// ================================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Add skip link for screen readers
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.textContent = 'Skip to main content';
+    skipLink.className = 'skip-link visually-hidden-focusable';
+    skipLink.style.cssText = `
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #000;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 9999;
+    `;
+    skipLink.addEventListener('focus', function() {
+        this.style.top = '6px';
+    });
+    skipLink.addEventListener('blur', function() {
+        this.style.top = '-40px';
+    });
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Add main content ID if it doesn't exist
+    const mainContent = document.querySelector('main, #home, .hero');
+    if (mainContent && !mainContent.id) {
+        mainContent.id = 'main-content';
+    }
+    
+    // Improve carousel accessibility
+    const carouselControls = document.querySelectorAll('.carousel-control-prev, .carousel-control-next');
+    carouselControls.forEach(control => {
+        control.setAttribute('role', 'button');
+        if (!control.getAttribute('aria-label')) {
+            const isNext = control.classList.contains('carousel-control-next');
+            control.setAttribute('aria-label', isNext ? 'Next slide' : 'Previous slide');
+        }
+    });
+});
+
+// ================================================
+// Error Handling and Logging
+// ================================================
+window.addEventListener('error', function(e) {
+    console.error('JavaScript Error:', e.error);
+    // In production, you might want to send this to a logging service
+});
+
+// ================================================
+// Console Welcome Message
+// ================================================
+console.log('%c🌟 Tab Holidays Website', 'color: #20B2AA; font-size: 20px; font-weight: bold;');
+console.log('%cWebsite loaded successfully! Ready for your next adventure.', 'color: #9ACD32; font-size: 14px;');
+
+// ================================================
+// End of JavaScript File
+// ================================================

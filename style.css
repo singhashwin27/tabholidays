@@ -384,23 +384,130 @@ body {
     background: rgba(255,255,255,0.15);
 }
 
-/* Footer */
+/* Footer - Redesigned with branding focus */
 .footer {
     background: var(--dark);
     color: white;
-    padding: 40px 0 20px;
+    padding: 80px 0 30px; /* Increased top padding for better spacing */
+}
+
+/* Footer branding - matching navbar style */
+.footer-brand {
+    margin-bottom: 2rem;
+}
+
+.brand-container-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.brand-text-footer {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.company-name-footer {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.tagline-footer {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--secondary-lime);
+    margin: -2px 0 0 0;
+    letter-spacing: 0.5px;
+}
+
+.brand-container-footer img {
+    height: 80px;
+    width: auto;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Footer description */
+.footer-description {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-weight: 400;
+}
+
+/* Social links styling */
+.social-links {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .social-links a {
     color: white;
-    font-size: 1.5rem;
-    margin: 0 10px;
+    font-size: 1.8rem;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .social-links a:hover {
     color: var(--secondary-lime);
+    background: rgba(154, 205, 50, 0.2);
     transform: translateY(-3px);
+}
+
+/* Footer bottom section */
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 3rem 0 2rem 0;
+}
+
+.footer .text-light {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.footer .text-light:hover {
+    color: var(--secondary-lime) !important;
+}
+
+/* Footer links styling */
+.footer-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.link-separator {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    margin: 0 0.5rem;
 }
 
 /* Responsive Design */
@@ -441,6 +548,69 @@ body {
     
     .tagline {
         font-size: 0.65rem; /* Smaller tagline on mobile */
+    }
+    
+    /* Footer mobile adjustments */
+    .footer {
+        padding: 60px 0 30px;
+    }
+    
+    .brand-container-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .brand-container-footer img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        height: 60px;
+    }
+    
+    .brand-text-footer {
+        text-align: center;
+    }
+    
+    .company-name-footer {
+        font-size: 1.6rem;
+    }
+    
+    .tagline-footer {
+        font-size: 0.8rem;
+    }
+    
+    .footer-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .social-links {
+        gap: 0.8rem;
+    }
+    
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    /* Mobile footer alignment - center everything */
+    .footer .row.align-items-center {
+        text-align: center;
+    }
+    
+    .footer .col-md-6:first-child {
+        margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .footer-links a {
+        padding: 0.7rem 1rem;
+        min-width: 100px;
+        text-align: center;
     }
 }
 

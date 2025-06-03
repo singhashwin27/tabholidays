@@ -103,12 +103,10 @@ document.querySelectorAll('.stats').forEach(stat => {
     statObserver.observe(stat);
 });
 
-// Contact form submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+// Web3Forms contact form submission
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Simple form validation and submission simulation
-    const formData = new FormData(this);
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     
@@ -116,19 +114,60 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitBtn.innerHTML = '<i class="bi bi-arrow-clockwise spin me-2"></i>Sending...';
     submitBtn.disabled = true;
     
-    // Simulate form submission
-    setTimeout(() => {
-        submitBtn.innerHTML = '<i class="bi bi-check me-2"></i>Message Sent!';
-        submitBtn.style.background = '#28a745';
+    try {
+        const formData = new FormData(this);
         
-        // Reset form after 2 seconds
+        // Submit to Web3Forms
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Success state
+            submitBtn.innerHTML = '<i class="bi bi-check me-2"></i>Message Sent!';
+            submitBtn.style.background = '#28a745';
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'alert alert-success mt-3';
+            successMessage.innerHTML = '<i class="bi bi-check-circle me-2"></i>Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+            this.appendChild(successMessage);
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+                successMessage.remove();
+            }, 3000);
+        } else {
+            throw new Error(result.message || 'Something went wrong');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        
+        // Error state
+        submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Error - Try Again';
+        submitBtn.style.background = '#dc3545';
+        
+        // Show error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'alert alert-danger mt-3';
+        errorMessage.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Sorry, there was an error sending your message. Please try again or contact us directly.';
+        this.appendChild(errorMessage);
+        
+        // Reset button after 3 seconds
         setTimeout(() => {
-            this.reset();
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             submitBtn.style.background = '';
-        }, 2000);
-    }, 1500);
+            errorMessage.remove();
+        }, 3000);
+    }
 });
 
 // Add hover effects to destination cards
@@ -178,11 +217,9 @@ style.textContent = `
             opacity: 0;
         }
     }
-    
     .spin {
         animation: spin 1s linear infinite;
     }
-    
     @keyframes spin {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
@@ -241,31 +278,6 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
                 toggle: false
             });
             bsCollapse.hide();
-        }
-    });
-});
-
-// Image loading error handling for destination cards
-document.addEventListener('DOMContentLoaded', function() {
-    const destinationCards = document.querySelectorAll('.destination-card');
-    
-    destinationCards.forEach(card => {
-        const backgroundImage = window.getComputedStyle(card).backgroundImage;
-        if (backgroundImage && backgroundImage !== 'none') {
-            const imageUrl = backgroundImage.slice(4, -1).replace(/["']/g, "");
-            
-            // Create a new image element to test if the image loads
-            const img = new Image();
-            img.onload = function() {
-                // Image loaded successfully
-                card.style.backgroundImage = `url('${imageUrl}')`;
-            };
-            img.onerror = function() {
-                // Image failed to load, keep the gradient fallback
-                console.warn(`Failed to load image: ${imageUrl}`);
-                card.style.backgroundImage = 'linear-gradient(135deg, var(--primary-teal), var(--dark-teal))';
-            };
-            img.src = imageUrl;
         }
     });
 });

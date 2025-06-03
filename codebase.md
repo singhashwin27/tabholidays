@@ -1,6 +1,30 @@
+# Images/Bangkok.jpg
+
+This is a binary file of the type: Image
+
 # Images/hero-background.jpg
 
 This is a binary file of the type: Image
+
+# Images/koh-samui.jpg
+
+This is a binary file of the type: Image
+
+# Images/krabi.webp
+
+This is a binary file of the type: Image
+
+# Images/pattaya.webp
+
+This is a binary file of the type: Image
+
+# Images/phuket.jpg
+
+This is a binary file of the type: Image
+
+# Images/singapore.cms
+
+This is a binary file of the type: Binary
 
 # Images/Tab_new_logo.png
 

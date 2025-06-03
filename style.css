@@ -324,10 +324,161 @@ body {
     margin-top: 1rem;
 }
 
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background: var(--light-gray);
+    position: relative;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(32, 178, 170, 0.2);
+    border-color: var(--primary-teal);
+}
+
+.testimonial-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-teal), var(--secondary-lime));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.author-info h6 {
+    margin: 0;
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.author-info span {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Carousel Controls Styling */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-teal);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev {
+    left: -30px;
+}
+
+.carousel-control-next {
+    right: -30px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: var(--dark-teal);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Custom Carousel Indicators */
+.carousel-indicators-custom {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carousel-indicators-custom button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-teal);
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-indicators-custom button.active,
+.carousel-indicators-custom button:hover {
+    background: var(--primary-teal);
+    transform: scale(1.2);
+}
+
 /* About Section */
 .about {
     padding: 80px 0;
-    background: var(--light-gray);
+    background: white;
 }
 
 .stats {
@@ -335,8 +486,14 @@ body {
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.stats:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(32, 178, 170, 0.15);
 }
 
 .stat-number {
@@ -515,98 +672,153 @@ body {
     .hero {
         margin-top: 80px; /* Adjusted for mobile navbar */
     }
-    
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .service-card, .destination-card {
         margin-bottom: 1rem;
     }
-    
+
     .navbar-brand img {
         height: 60px; /* Smaller logo on mobile */
     }
-    
+
     .navbar.scrolled .navbar-brand img {
         height: 50px; /* Even smaller when scrolled on mobile */
     }
-    
+
     .navbar {
         padding: 1rem 0; /* Reduced padding on mobile */
         min-height: 80px;
     }
-    
+
     .navbar.scrolled {
         padding: 0.5rem 0;
         min-height: 70px;
     }
-    
+
     .company-name {
         font-size: 1.2rem; /* Slightly smaller text on mobile */
     }
-    
+
     .tagline {
         font-size: 0.65rem; /* Smaller tagline on mobile */
     }
-    
+
+    /* Testimonials mobile adjustments */
+    .testimonial-card {
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        left: -25px;
+        right: -25px;
+    }
+
+    .carousel-control-next {
+        right: -25px;
+    }
+
+    .carousel-control-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-indicators-custom {
+        bottom: -50px;
+        gap: 0.8rem;
+    }
+
+    .carousel-indicators-custom button {
+        width: 12px;
+        height: 12px;
+    }
+
+    .testimonial-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .author-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        margin-right: 0.8rem;
+    }
+
+    .author-info h6 {
+        font-size: 1rem;
+    }
+
+    .author-info span {
+        font-size: 0.85rem;
+    }
+
     /* Footer mobile adjustments */
     .footer {
         padding: 60px 0 30px;
     }
-    
+
     .brand-container-footer {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .brand-container-footer img {
         margin-right: 0;
         margin-bottom: 1rem;
         height: 60px;
     }
-    
+
     .brand-text-footer {
         text-align: center;
     }
-    
+
     .company-name-footer {
         font-size: 1.6rem;
     }
-    
+
     .tagline-footer {
         font-size: 0.8rem;
     }
-    
+
     .footer-description {
         font-size: 1rem;
         padding: 0 1rem;
     }
-    
+
     .social-links {
         gap: 0.8rem;
     }
-    
+
     .social-links a {
         width: 45px;
         height: 45px;
         font-size: 1.5rem;
     }
-    
+
     /* Mobile footer alignment - center everything */
     .footer .row.align-items-center {
         text-align: center;
     }
-    
+
     .footer .col-md-6:first-child {
         margin-bottom: 1rem;
     }
-    
+
     .footer-links {
         justify-content: center;
         margin-top: 0.5rem;
     }
-    
+
     .footer-links a {
         padding: 0.7rem 1rem;
         min-width: 100px;

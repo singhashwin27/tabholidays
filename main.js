@@ -103,6 +103,68 @@ document.querySelectorAll('.stats').forEach(stat => {
     statObserver.observe(stat);
 });
 
+// Testimonials carousel enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialCarousel = document.getElementById('testimonialCarousel');
+    
+    if (testimonialCarousel) {
+        // Initialize Bootstrap carousel with custom options
+        const carousel = new bootstrap.Carousel(testimonialCarousel, {
+            interval: 5000,
+            wrap: true,
+            touch: true
+        });
+
+        // Add pause on hover functionality
+        testimonialCarousel.addEventListener('mouseenter', function() {
+            carousel.pause();
+        });
+
+        testimonialCarousel.addEventListener('mouseleave', function() {
+            carousel.cycle();
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                carousel.prev();
+            } else if (e.key === 'ArrowRight') {
+                carousel.next();
+            }
+        });
+
+        // Animate testimonial cards when they come into view
+        const testimonialObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.5 + 's';
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            testimonialObserver.observe(card);
+        });
+    }
+});
+
+// Testimonial card hover effects
+document.querySelectorAll('.testimonial-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px) rotateY(5deg)';
+        this.style.boxShadow = '0 30px 60px rgba(32, 178, 170, 0.3)';
+    });
+
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotateY(0deg)';
+        this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+    });
+});
+
 // Web3Forms contact form submission
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -217,12 +279,29 @@ style.textContent = `
             opacity: 0;
         }
     }
+    
     .spin {
         animation: spin 1s linear infinite;
     }
+    
     @keyframes spin {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
+    }
+    
+    @keyframes testimonialSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .testimonial-card.animated {
+        animation: testimonialSlideIn 0.8s ease-out forwards;
     }
 `;
 document.head.appendChild(style);
@@ -231,32 +310,10 @@ document.head.appendChild(style);
 window.addEventListener('load', function() {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
+    
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
-});
-
-// Newsletter subscription
-document.querySelector('.input-group button').addEventListener('click', function() {
-    const emailInput = this.previousElementSibling;
-    const email = emailInput.value;
-    
-    if (email && email.includes('@')) {
-        const originalHTML = this.innerHTML;
-        this.innerHTML = '<i class="bi bi-check"></i>';
-        this.style.background = '#28a745';
-        
-        setTimeout(() => {
-            this.innerHTML = originalHTML;
-            this.style.background = '';
-            emailInput.value = '';
-        }, 2000);
-    } else {
-        emailInput.style.borderColor = '#dc3545';
-        setTimeout(() => {
-            emailInput.style.borderColor = '';
-        }, 2000);
-    }
 });
 
 // Mobile menu enhancement
@@ -281,3 +338,120 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         }
     });
 });
+
+// Enhanced testimonial carousel indicators
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('testimonialCarousel');
+    const indicators = document.querySelectorAll('.carousel-indicators-custom button');
+    
+    if (carousel && indicators.length > 0) {
+        // Update active indicator when carousel slides
+        carousel.addEventListener('slid.bs.carousel', function(e) {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === e.to);
+            });
+        });
+        
+        // Add click functionality to custom indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+                bsCarousel.to(index);
+            });
+        });
+    }
+});
+
+// Add touch/swipe support for testimonials on mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.getElementById('testimonialCarousel')?.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById('testimonialCarousel')?.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const carousel = bootstrap.Carousel.getInstance(document.getElementById('testimonialCarousel'));
+    
+    if (touchEndX < touchStartX - 50) {
+        // Swipe left - next slide
+        carousel.next();
+    }
+    
+    if (touchEndX > touchStartX + 50) {
+        // Swipe right - previous slide
+        carousel.prev();
+    }
+}
+
+// Testimonial rating animation
+document.addEventListener('DOMContentLoaded', function() {
+    const ratingObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stars = entry.target.querySelectorAll('.bi-star-fill');
+                stars.forEach((star, index) => {
+                    setTimeout(() => {
+                        star.style.transform = 'scale(1.2)';
+                        star.style.color = '#ffc107';
+                        setTimeout(() => {
+                            star.style.transform = 'scale(1)';
+                        }, 200);
+                    }, index * 100);
+                });
+                ratingObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    document.querySelectorAll('.rating').forEach(rating => {
+        ratingObserver.observe(rating);
+    });
+});
+
+// Enhanced parallax effect for floating elements
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.floating-icon');
+    
+    parallaxElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.2);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+    });
+});
+
+// Auto-resize testimonial cards to equal height
+function equalizeTestimonialHeights() {
+    const cards = document.querySelectorAll('.testimonial-card');
+    let maxHeight = 0;
+    
+    // Reset heights
+    cards.forEach(card => {
+        card.style.height = 'auto';
+    });
+    
+    // Find max height
+    cards.forEach(card => {
+        const height = card.offsetHeight;
+        if (height > maxHeight) {
+            maxHeight = height;
+        }
+    });
+    
+    // Set all cards to max height
+    cards.forEach(card => {
+        card.style.height = maxHeight + 'px';
+    });
+}
+
+// Run on load and resize
+window.addEventListener('load', equalizeTestimonialHeights);
+window.addEventListener('resize', equalizeTestimonialHeights);

@@ -568,6 +568,91 @@ body {
     transform: scale(1.2);
 }
 
+/* ================================================
+   Client Gallery Section Styles
+   ================================================ */
+.client-gallery {
+  padding: 80px 0;
+  background: white;
+}
+
+.client-image-card {
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.client-image-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(32, 178, 170, 0.2);
+}
+
+.client-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  background: var(--primary-teal);
+}
+
+.client-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.client-image-card:hover .client-image {
+  transform: scale(1.05);
+}
+
+.client-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.client-image-card:hover .client-image-overlay {
+  transform: translateY(0);
+}
+
+.client-image-content h5 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-lime);
+}
+
+.client-image-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.gallery-cta {
+  background: linear-gradient(135deg, rgba(32, 178, 170, 0.1), rgba(154, 205, 50, 0.1));
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  border: 2px solid rgba(32, 178, 170, 0.2);
+}
+
+.gallery-cta h4 {
+  color: var(--primary-teal);
+  font-weight: 700;
+}
+
+.gallery-cta p {
+  color: var(--dark);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
 /* ================================================ About Section Styles ================================================ */
 .about {
     padding: 80px 0;

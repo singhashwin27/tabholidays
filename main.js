@@ -645,6 +645,70 @@ window.addEventListener('error', function(e) {
 });
 
 // ================================================
+// Client Gallery Image Loading and Optimization
+// ================================================
+document.addEventListener('DOMContentLoaded', function() {
+  const clientImages = document.querySelectorAll('.client-image');
+  
+  // Lazy loading for client images
+  const imageObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        
+        // Add loading animation
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.5s ease';
+        
+        // Simulate loading completion
+        setTimeout(() => {
+          img.style.opacity = '1';
+        }, 200);
+        
+        imageObserver.unobserve(img);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '50px'
+  });
+  
+  clientImages.forEach(img => {
+    imageObserver.observe(img);
+  });
+});
+
+// ================================================
+// Client Gallery Hover Effects Enhancement
+// ================================================
+document.querySelectorAll('.client-image-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    // Add subtle rotation effect
+    this.style.transform = 'translateY(-10px) rotateY(2deg)';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) rotateY(0deg)';
+  });
+  
+  // Add click effect for mobile users
+  card.addEventListener('click', function() {
+    // Toggle overlay visibility on mobile
+    if (window.innerWidth <= 768) {
+      const overlay = this.querySelector('.client-image-overlay');
+      overlay.style.transform = overlay.style.transform === 'translateY(0%)' 
+        ? 'translateY(100%)' 
+        : 'translateY(0%)';
+      
+      // Auto-hide after 3 seconds on mobile
+      setTimeout(() => {
+        overlay.style.transform = 'translateY(100%)';
+      }, 3000);
+    }
+  });
+});
+
+// ================================================
 // Console Welcome Message
 // ================================================
 console.log('%c🌟 Tab Holidays Website', 'color: #20B2AA; font-size: 20px; font-weight: bold;');

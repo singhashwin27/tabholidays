@@ -656,7 +656,7 @@ body {
 /* ================================================ About Section Styles ================================================ */
 .about {
     padding: 80px 0;
-    background: white;
+    background: var(--light-gray);
 }
 
 .stats {

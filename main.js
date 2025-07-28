@@ -1,6 +1,6 @@
 /* ================================================
-   Tab Holidays - Travel Company Website JavaScript
-   ================================================ */
+Tab Holidays - Travel Company Website JavaScript - FIXED VERSION
+================================================ */
 
 // ================================================
 // Smooth Scrolling for Navigation Links
@@ -118,10 +118,45 @@ document.querySelectorAll('.stats').forEach(stat => {
 });
 
 // ================================================
-// Testimonials Carousel Enhancement - DISABLED AUTO-SWITCHING
+// Enhanced Testimonial Cards Equal Height Management - FIXED VERSION
+// ================================================
+function equalizeTestimonialHeights() {
+    // Get all currently visible testimonial cards
+    const visibleCards = document.querySelectorAll('.carousel-item.active .testimonial-card');
+    
+    if (visibleCards.length === 0) return;
+    
+    let maxHeight = 0;
+    
+    // Reset heights first to get natural heights
+    visibleCards.forEach(card => {
+        card.style.minHeight = 'auto';
+        card.style.height = 'auto';
+    });
+    
+    // Small delay to ensure layout is calculated
+    setTimeout(() => {
+        // Find maximum natural height
+        visibleCards.forEach(card => {
+            const height = card.offsetHeight;
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+        });
+        
+        // Set all visible cards to maximum height
+        visibleCards.forEach(card => {
+            card.style.minHeight = maxHeight + 'px';
+        });
+    }, 50);
+}
+
+// ================================================
+// Testimonials Carousel Enhancement - FIXED VERSION
 // ================================================
 document.addEventListener('DOMContentLoaded', function() {
     const testimonialCarousel = document.getElementById('testimonialCarousel');
+    
     if (testimonialCarousel) {
         // Initialize Bootstrap carousel with auto-switching DISABLED
         const carousel = new bootstrap.Carousel(testimonialCarousel, {
@@ -129,7 +164,15 @@ document.addEventListener('DOMContentLoaded', function() {
             wrap: true,
             touch: true
         });
-
+        
+        // Equalize heights on carousel slide events
+        testimonialCarousel.addEventListener('slid.bs.carousel', function(e) {
+            setTimeout(equalizeTestimonialHeights, 100);
+        });
+        
+        // Initial height equalization
+        setTimeout(equalizeTestimonialHeights, 200);
+        
         // Keep keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') {
@@ -138,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 carousel.next();
             }
         });
-
+        
         // Animate testimonial cards when they come into view
         const testimonialObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
@@ -151,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.2,
             rootMargin: '0px 0px -100px 0px'
         });
-
+        
         document.querySelectorAll('.testimonial-card').forEach(card => {
             testimonialObserver.observe(card);
         });
@@ -166,7 +209,7 @@ document.querySelectorAll('.testimonial-card').forEach(card => {
         this.style.transform = 'translateY(-15px) rotateY(5deg)';
         this.style.boxShadow = '0 30px 60px rgba(32, 178, 170, 0.3)';
     });
-
+    
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) rotateY(0deg)';
         this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
@@ -216,11 +259,9 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 submitBtn.style.background = '';
                 successMessage.remove();
             }, 3000);
-            
         } else {
             throw new Error(result.message || 'Something went wrong');
         }
-        
     } catch (error) {
         console.error('Error:', error);
         
@@ -251,7 +292,7 @@ document.querySelectorAll('.destination-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'scale(1.05) rotateY(5deg)';
     });
-
+    
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1) rotateY(0deg)';
     });
@@ -297,13 +338,16 @@ style.textContent = `
             opacity: 0;
         }
     }
+    
     .spin {
         animation: spin 1s linear infinite;
     }
+    
     @keyframes spin {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
     }
+    
     @keyframes testimonialSlideIn {
         from {
             opacity: 0;
@@ -314,6 +358,7 @@ style.textContent = `
             transform: translateY(0) scale(1);
         }
     }
+    
     .testimonial-card.animated {
         animation: testimonialSlideIn 0.8s ease-out forwards;
     }
@@ -326,9 +371,15 @@ document.head.appendChild(style);
 window.addEventListener('load', function() {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
+    
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+    
+    // Multiple delays to ensure testimonial heights are calculated properly
+    setTimeout(equalizeTestimonialHeights, 100);
+    setTimeout(equalizeTestimonialHeights, 500);
+    setTimeout(equalizeTestimonialHeights, 1000);
 });
 
 // ================================================
@@ -369,8 +420,11 @@ document.addEventListener('DOMContentLoaded', function() {
             indicators.forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === e.to);
             });
+            
+            // Equalize heights after slide
+            setTimeout(equalizeTestimonialHeights, 50);
         });
-
+        
         // Add click functionality to custom indicators
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', function() {
@@ -382,29 +436,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ================================================
-// Touch/Swipe Support for Testimonials on Mobile
+// Touch/Swipe Support for Testimonials on Mobile - SINGLE DECLARATION
 // ================================================
 let touchStartX = 0;
 let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
 
-document.getElementById('testimonialCarousel')?.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-});
+const testimonialCarouselElement = document.getElementById('testimonialCarousel');
 
-document.getElementById('testimonialCarousel')?.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
+if (testimonialCarouselElement) {
+    testimonialCarouselElement.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    });
+    
+    testimonialCarouselElement.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    });
+}
 
 function handleSwipe() {
-    const carousel = bootstrap.Carousel.getInstance(document.getElementById('testimonialCarousel'));
-    if (touchEndX < touchStartX - 50) {
-        // Swipe left - next slide
-        carousel.next();
-    }
-    if (touchEndX > touchStartX + 50) {
-        // Swipe right - previous slide
-        carousel.prev();
+    const carousel = bootstrap.Carousel.getInstance(testimonialCarouselElement);
+    if (!carousel) return;
+    
+    const horizontalDiff = touchEndX - touchStartX;
+    const verticalDiff = Math.abs(touchEndY - touchStartY);
+    
+    // Only trigger swipe if horizontal movement is greater than vertical
+    if (Math.abs(horizontalDiff) > verticalDiff) {
+        if (horizontalDiff < -50) {
+            // Swipe left - next slide
+            carousel.next();
+        } else if (horizontalDiff > 50) {
+            // Swipe right - previous slide
+            carousel.prev();
+        }
     }
 }
 
@@ -428,8 +497,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 ratingObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
-
+    }, {
+        threshold: 0.5
+    });
+    
     document.querySelectorAll('.rating').forEach(rating => {
         ratingObserver.observe(rating);
     });
@@ -450,45 +521,16 @@ window.addEventListener('scroll', function() {
 });
 
 // ================================================
-// Testimonial Cards Equal Height Management
+// Window Event Listeners - Enhanced
 // ================================================
-function equalizeTestimonialHeights() {
-    const cards = document.querySelectorAll('.testimonial-card');
-    let maxHeight = 0;
-
-    // Reset heights first
-    cards.forEach(card => {
-        card.style.height = 'auto';
-    });
-
-    // Find maximum height
-    cards.forEach(card => {
-        const height = card.offsetHeight;
-        if (height > maxHeight) {
-            maxHeight = height;
-        }
-    });
-
-    // Set all cards to maximum height for uniformity
-    cards.forEach(card => {
-        card.style.height = maxHeight + 'px';
-    });
-}
-
-// ================================================
-// Window Event Listeners
-// ================================================
-
-// Run equalization on window load and resize
-window.addEventListener('load', function() {
-    // Small delay to ensure all content is rendered
-    setTimeout(equalizeTestimonialHeights, 100);
-});
-
 window.addEventListener('resize', function() {
-    // Debounce resize events
-    clearTimeout(window.resizeTimeout);
-    window.resizeTimeout = setTimeout(equalizeTestimonialHeights, 250);
+    // Debounce resize events for testimonials
+    clearTimeout(window.testimonialResizeTimeout);
+    window.testimonialResizeTimeout = setTimeout(function() {
+        equalizeTestimonialHeights();
+        // Run again after a short delay for better consistency
+        setTimeout(equalizeTestimonialHeights, 100);
+    }, 250);
 });
 
 // ================================================
@@ -496,6 +538,8 @@ window.addEventListener('resize', function() {
 // ================================================
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
+    if (!form) return;
+    
     const inputs = form.querySelectorAll('input, select, textarea');
     
     inputs.forEach(input => {
@@ -611,12 +655,15 @@ document.addEventListener('DOMContentLoaded', function() {
         text-decoration: none;
         z-index: 9999;
     `;
+    
     skipLink.addEventListener('focus', function() {
         this.style.top = '6px';
     });
+    
     skipLink.addEventListener('blur', function() {
         this.style.top = '-40px';
     });
+    
     document.body.insertBefore(skipLink, document.body.firstChild);
     
     // Add main content ID if it doesn't exist
@@ -648,65 +695,102 @@ window.addEventListener('error', function(e) {
 // Client Gallery Image Loading and Optimization
 // ================================================
 document.addEventListener('DOMContentLoaded', function() {
-  const clientImages = document.querySelectorAll('.client-image');
-  
-  // Lazy loading for client images
-  const imageObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        
-        // Add loading animation
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        
-        // Simulate loading completion
-        setTimeout(() => {
-          img.style.opacity = '1';
-        }, 200);
-        
-        imageObserver.unobserve(img);
-      }
+    const clientImages = document.querySelectorAll('.client-image');
+    
+    // Lazy loading for client images
+    const imageObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // Add loading animation
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.5s ease';
+                
+                // Simulate loading completion
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, 200);
+                
+                imageObserver.unobserve(img);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '50px'
-  });
-  
-  clientImages.forEach(img => {
-    imageObserver.observe(img);
-  });
+    
+    clientImages.forEach(img => {
+        imageObserver.observe(img);
+    });
 });
 
 // ================================================
 // Client Gallery Hover Effects Enhancement
 // ================================================
 document.querySelectorAll('.client-image-card').forEach(card => {
-  card.addEventListener('mouseenter', function() {
-    // Add subtle rotation effect
-    this.style.transform = 'translateY(-10px) rotateY(2deg)';
-  });
-  
-  card.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) rotateY(0deg)';
-  });
-  
-  // Add click effect for mobile users
-  card.addEventListener('click', function() {
-    // Toggle overlay visibility on mobile
-    if (window.innerWidth <= 768) {
-      const overlay = this.querySelector('.client-image-overlay');
-      overlay.style.transform = overlay.style.transform === 'translateY(0%)' 
-        ? 'translateY(100%)' 
-        : 'translateY(0%)';
-      
-      // Auto-hide after 3 seconds on mobile
-      setTimeout(() => {
-        overlay.style.transform = 'translateY(100%)';
-      }, 3000);
-    }
-  });
+    card.addEventListener('mouseenter', function() {
+        // Add subtle rotation effect
+        this.style.transform = 'translateY(-10px) rotateY(2deg)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotateY(0deg)';
+    });
+    
+    // Add click effect for mobile users
+    card.addEventListener('click', function() {
+        // Toggle overlay visibility on mobile
+        if (window.innerWidth <= 768) {
+            const overlay = this.querySelector('.client-image-overlay');
+            overlay.style.transform = overlay.style.transform === 'translateY(0%)' ? 'translateY(100%)' : 'translateY(0%)';
+            
+            // Auto-hide after 3 seconds on mobile
+            setTimeout(() => {
+                overlay.style.transform = 'translateY(100%)';
+            }, 3000);
+        }
+    });
 });
+
+// ================================================
+// Font Loading Handler for Better Height Calculation
+// ================================================
+if ('fonts' in document) {
+    document.fonts.ready.then(function() {
+        // Fonts are loaded, recalculate heights
+        setTimeout(equalizeTestimonialHeights, 100);
+    });
+}
+
+// ================================================
+// Mutation Observer for Dynamic Content Changes
+// ================================================
+if (typeof MutationObserver !== 'undefined') {
+    const testimonialSection = document.getElementById('testimonials');
+    
+    if (testimonialSection) {
+        const observer = new MutationObserver(function(mutations) {
+            let shouldRecalculate = false;
+            
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                    shouldRecalculate = true;
+                }
+            });
+            
+            if (shouldRecalculate) {
+                setTimeout(equalizeTestimonialHeights, 100);
+            }
+        });
+        
+        observer.observe(testimonialSection, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    }
+}
 
 // ================================================
 // Console Welcome Message

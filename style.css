@@ -980,53 +980,284 @@ body {
     border-left: 4px solid var(--primary-teal);
 }
 
-/* ================================================ Enhanced Responsive Design for Testimonials ================================================ */
+/* ================================================
+Enhanced Testimonials Section - FIXED VERSION
+================================================ */
+
+.testimonials {
+    padding: 80px 0;
+    background: var(--light-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fixed Testimonials Grid Layout with Equal Heights */
+.testimonial-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: stretch; /* This ensures all cards stretch to equal height */
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Individual Testimonial Cards - Fixed Height Issues */
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    
+    /* Flexbox for internal content distribution */
+    display: flex;
+    flex-direction: column;
+    
+    /* Fixed width constraints for consistent sizing */
+    flex: 1 1 320px; /* Grow, shrink, basis */
+    min-width: 320px;
+    max-width: 400px;
+    
+    /* Fixed height to ensure all cards are equal */
+    min-height: 350px; /* Set minimum height for consistency */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(32, 178, 170, 0.2);
+    border-color: var(--primary-teal);
+}
+
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between; /* Distribute content evenly */
+}
+
+/* Star Rating - Fixed at top */
+.rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Testimonial Text - Takes up available space with proper overflow handling */
+.testimonial-card p {
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.7;
+    font-size: 1rem;
+    flex-grow: 1; /* Take up available space */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    
+    /* Text overflow handling */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    
+    /* Limit text height and add scrolling if needed */
+    max-height: 200px;
+    overflow-y: auto;
+    
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-teal) transparent;
+}
+
+/* Webkit scrollbar styling */
+.testimonial-card p::-webkit-scrollbar {
+    width: 4px;
+}
+
+.testimonial-card p::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.testimonial-card p::-webkit-scrollbar-thumb {
+    background-color: var(--primary-teal);
+    border-radius: 2px;
+}
+
+/* Author Information - Fixed at bottom */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto; /* Push to bottom */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-teal), var(--secondary-lime));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.author-info {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.author-info h6 {
+    margin: 0;
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.author-info span {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ================================================
+Carousel Controls Styling - Enhanced
+================================================ */
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-teal);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.carousel-control-prev {
+    left: -30px;
+}
+
+.carousel-control-next {
+    right: -30px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: var(--dark-teal);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Custom Carousel Indicators */
+.carousel-indicators-custom {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carousel-indicators-custom button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-teal);
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-indicators-custom button.active,
+.carousel-indicators-custom button:hover {
+    background: var(--primary-teal);
+    transform: scale(1.2);
+}
+
+/* ================================================
+Responsive Design - FIXED for all screen sizes
+================================================ */
 
 /* Large Desktop - Prevent over-stretching */
 @media (min-width: 1400px) {
     .testimonial-row {
-        grid-template-columns: repeat(3, 400px); /* Fixed 3 columns on very large screens */
         max-width: 1300px;
+    }
+    
+    .testimonial-card {
+        flex: 1 1 400px;
+        max-width: 400px;
     }
 }
 
 /* Desktop - Optimal 3-column layout */
 @media (min-width: 993px) and (max-width: 1399px) {
     .testimonial-row {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 380px));
         max-width: 1200px;
+    }
+    
+    .testimonial-card {
+        flex: 1 1 350px;
+        max-width: 380px;
     }
 }
 
-/* ================================================ Responsive Design - Tablet ================================================ */
+/* Tablet Layout */
 @media (max-width: 992px) {
-    /* Testimonials Tablet Layout */
     .testimonial-row {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
         max-width: 800px;
-        margin: 0 auto;
+        gap: 1.5rem;
     }
-
+    
     .testimonial-card {
-        min-width: 300px;
+        flex: 1 1 300px;
         max-width: 500px;
+        min-height: 320px;
     }
-
+    
     /* Carousel controls positioning for tablets */
     .carousel-control-prev,
     .carousel-control-next {
         width: 50px;
         height: 50px;
     }
-
+    
     .carousel-control-prev {
         left: -25px;
     }
-
+    
     .carousel-control-next {
         right: -25px;
     }
-
+    
     .carousel-control-icon {
         width: 50px;
         height: 50px;
@@ -1034,96 +1265,56 @@ body {
     }
 }
 
-/* ================================================ Responsive Design - Mobile ================================================ */
+/* Mobile Layout */
 @media (max-width: 768px) {
-    /* Hero Section Mobile */
-    .hero {
-        margin-top: 80px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    /* General Card Spacing */
-    .service-card,
-    .destination-card {
-        margin-bottom: 1rem;
-    }
-
-    /* Navigation Mobile */
-    .navbar-brand img {
-        height: 60px;
-    }
-
-    .navbar.scrolled .navbar-brand img {
-        height: 50px;
-    }
-
-    .navbar {
-        padding: 1rem 0;
-        min-height: 80px;
-    }
-
-    .navbar.scrolled {
-        padding: 0.5rem 0;
-        min-height: 70px;
-    }
-
-    .company-name {
-        font-size: 1.2rem;
-    }
-
-    .tagline {
-        font-size: 0.65rem;
-    }
-
-    /* Testimonials Mobile Optimizations */
     .testimonials {
         padding: 60px 0;
     }
-
+    
     .testimonial-row {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 1.5rem;
         max-width: 100%;
         margin: 0;
         padding: 0 1rem;
     }
-
+    
     .testimonial-card {
+        flex: none;
         padding: 1.5rem;
         border-radius: 15px;
-        min-width: 280px; /* Smaller minimum for mobile */
-        max-width: 100%; /* Full width on mobile */
-        margin: 0 auto; /* Center single column */
+        min-width: 280px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 300px;
     }
-
+    
     .testimonial-card p {
         font-size: 0.95rem;
         line-height: 1.6;
+        max-height: 150px;
     }
-
+    
     .rating {
         font-size: 1.1rem;
         margin-bottom: 1rem;
     }
-
+    
     .author-avatar {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
         margin-right: 0.8rem;
     }
-
+    
     .author-info h6 {
         font-size: 1rem;
     }
-
+    
     .author-info span {
         font-size: 0.85rem;
     }
-
+    
     /* Mobile Carousel Controls */
     .carousel-control-prev,
     .carousel-control-next {
@@ -1131,177 +1322,81 @@ body {
         height: 45px;
         opacity: 0.9;
     }
-
+    
     .carousel-control-prev {
         left: -22px;
     }
-
+    
     .carousel-control-next {
         right: -22px;
     }
-
+    
     .carousel-control-icon {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
     }
-
+    
     /* Custom Indicators Mobile */
     .carousel-indicators-custom {
         bottom: -50px;
         gap: 0.8rem;
     }
-
+    
     .carousel-indicators-custom button {
         width: 12px;
         height: 12px;
     }
-
-    /* Footer Mobile */
-    .footer {
-        padding: 60px 0 30px;
-    }
-
-    .brand-container-footer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .brand-container-footer img {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        height: 60px;
-    }
-
-    .brand-text-footer {
-        text-align: center;
-    }
-
-    .company-name-footer {
-        font-size: 1.6rem;
-    }
-
-    .tagline-footer {
-        font-size: 0.8rem;
-    }
-
-    .footer-description {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-
-    .social-links {
-        gap: 0.8rem;
-    }
-
-    .social-links a {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
-    }
-
-    /* Mobile Footer Alignment */
-    .footer .row.align-items-center {
-        text-align: center;
-    }
-
-    .footer .col-md-6:first-child {
-        margin-bottom: 1rem;
-    }
-
-    .footer-links {
-        justify-content: center;
-        margin-top: 0.5rem;
-    }
-
-    .footer-links a {
-        padding: 0.7rem 1rem;
-        min-width: 100px;
-        text-align: center;
-    }
-
-    /* Policy Pages Mobile Responsive */
-    .page-header {
-        padding: 100px 0 60px;
-        margin-top: 80px;
-    }
-
-    .policy-document {
-        padding: 2rem 1.5rem;
-        margin: 0 1rem;
-    }
-
-    .policy-content {
-        padding: 60px 0;
-    }
 }
 
-/* ================================================ Responsive Design - Extra Small Devices ================================================ */
+/* Extra Small Devices */
 @media (max-width: 576px) {
-    /* Extra Small Devices - Further Optimizations */
     .testimonial-row {
-        grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 0.5rem;
     }
-
+    
     .testimonial-card {
         padding: 1.2rem;
-        min-width: 260px; /* Even smaller minimum for tiny screens */
+        min-width: 260px;
         max-width: 100%;
+        min-height: 280px;
     }
-
+    
     .testimonial-card p {
         font-size: 0.9rem;
         line-height: 1.5;
+        max-height: 120px;
     }
-
+    
     .author-avatar {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
         margin-right: 0.6rem;
     }
-
+    
     .rating {
         font-size: 1rem;
     }
-
+    
     .carousel-control-prev,
     .carousel-control-next {
         width: 40px;
         height: 40px;
     }
-
+    
     .carousel-control-prev {
         left: -20px;
     }
-
+    
     .carousel-control-next {
         right: -20px;
     }
-
+    
     .carousel-control-icon {
         width: 40px;
         height: 40px;
         font-size: 1rem;
-    }
-
-    /* Policy Pages Extra Small Mobile */
-    .policy-document {
-        padding: 1.5rem 1rem;
-        margin: 0 0.5rem;
-    }
-
-    .policy-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .policy-section h3 {
-        font-size: 1.25rem;
-    }
-
-    .contact-info {
-        padding: 1rem;
     }
 }

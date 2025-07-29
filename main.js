@@ -754,6 +754,86 @@ document.querySelectorAll('.client-image-card').forEach(card => {
 });
 
 // ================================================
+// Client Gallery Carousel Enhancement
+// ================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const clientGalleryCarousel = document.getElementById('clientGalleryCarousel');
+    if (clientGalleryCarousel) {
+        // Initialize Bootstrap carousel with auto-switching DISABLED
+        const carousel = new bootstrap.Carousel(clientGalleryCarousel, {
+            interval: false, // DISABLED auto-switching
+            wrap: true,
+            touch: true
+        });
+
+        // Keep keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                carousel.prev();
+            } else if (e.key === 'ArrowRight') {
+                carousel.next();
+            }
+        });
+
+        // Add click functionality to custom indicators
+        const indicators = document.querySelectorAll('#clientGalleryCarousel .carousel-indicators-custom button');
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                carousel.to(index);
+            });
+        });
+
+        // Update active indicator when carousel slides
+        clientGalleryCarousel.addEventListener('slid.bs.carousel', function(e) {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === e.to);
+            });
+        });
+    }
+});
+
+// ================================================
+// Touch/Swipe Support for Client Gallery on Mobile
+// ================================================
+let clientTouchStartX = 0;
+let clientTouchEndX = 0;
+let clientTouchStartY = 0;
+let clientTouchEndY = 0;
+
+const clientGalleryElement = document.getElementById('clientGalleryCarousel');
+if (clientGalleryElement) {
+    clientGalleryElement.addEventListener('touchstart', function(e) {
+        clientTouchStartX = e.changedTouches[0].screenX;
+        clientTouchStartY = e.changedTouches[0].screenY;
+    });
+
+    clientGalleryElement.addEventListener('touchend', function(e) {
+        clientTouchEndX = e.changedTouches[0].screenX;
+        clientTouchEndY = e.changedTouches[0].screenY;
+        handleClientSwipe();
+    });
+}
+
+function handleClientSwipe() {
+    const carousel = bootstrap.Carousel.getInstance(clientGalleryElement);
+    if (!carousel) return;
+
+    const horizontalDiff = clientTouchEndX - clientTouchStartX;
+    const verticalDiff = Math.abs(clientTouchEndY - clientTouchStartY);
+
+    // Only trigger swipe if horizontal movement is greater than vertical
+    if (Math.abs(horizontalDiff) > verticalDiff) {
+        if (horizontalDiff < -50) {
+            // Swipe left - next slide
+            carousel.next();
+        } else if (horizontalDiff > 50) {
+            // Swipe right - previous slide
+            carousel.prev();
+        }
+    }
+}
+
+// ================================================
 // Font Loading Handler for Better Height Calculation
 // ================================================
 if ('fonts' in document) {

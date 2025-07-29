@@ -653,6 +653,169 @@ body {
   margin: 0 auto 2rem auto;
 }
 
+/* ================================================
+Client Gallery Carousel Enhancements
+================================================ */
+
+/* Client Gallery Carousel Container */
+#clientGalleryCarousel {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/* Client Gallery Carousel Controls */
+#clientGalleryCarousel .carousel-control-prev,
+#clientGalleryCarousel .carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-teal);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+#clientGalleryCarousel .carousel-control-prev {
+    left: -30px;
+}
+
+#clientGalleryCarousel .carousel-control-next {
+    right: -30px;
+}
+
+#clientGalleryCarousel .carousel-control-prev:hover,
+#clientGalleryCarousel .carousel-control-next:hover {
+    opacity: 1;
+    background: var(--dark-teal);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#clientGalleryCarousel .carousel-control-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Client Gallery Custom Indicators */
+#clientGalleryCarousel .carousel-indicators-custom {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#clientGalleryCarousel .carousel-indicators-custom button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-teal);
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#clientGalleryCarousel .carousel-indicators-custom button.active,
+#clientGalleryCarousel .carousel-indicators-custom button:hover {
+    background: var(--primary-teal);
+    transform: scale(1.2);
+}
+
+/* ================================================
+Responsive Design for Client Gallery Carousel
+================================================ */
+
+/* Tablet Layout */
+@media (max-width: 992px) {
+    #clientGalleryCarousel .carousel-control-prev,
+    #clientGalleryCarousel .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-prev {
+        left: -25px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-next {
+        right: -25px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    #clientGalleryCarousel .carousel-control-prev,
+    #clientGalleryCarousel .carousel-control-next {
+        width: 45px;
+        height: 45px;
+        opacity: 0.9;
+    }
+    
+    #clientGalleryCarousel .carousel-control-prev {
+        left: -22px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-next {
+        right: -22px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    /* Custom Indicators Mobile */
+    #clientGalleryCarousel .carousel-indicators-custom {
+        bottom: -50px;
+        gap: 0.8rem;
+    }
+    
+    #clientGalleryCarousel .carousel-indicators-custom button {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px) {
+    #clientGalleryCarousel .carousel-control-prev,
+    #clientGalleryCarousel .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-prev {
+        left: -20px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-next {
+        right: -20px;
+    }
+    
+    #clientGalleryCarousel .carousel-control-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
 /* ================================================ About Section Styles ================================================ */
 .about {
     padding: 80px 0;
